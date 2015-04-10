@@ -44,7 +44,6 @@ gem 'devise'
 gem 'mysql2'
 
 group :development do
-  gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19]
   gem 'hub', :require=>nil
   gem 'quiet_assets'
