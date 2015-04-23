@@ -51,7 +51,7 @@ body.static_pages.home {
    * Header
    */
   .masthead-brand {
-    margin-top: 50px;
+    margin-top: 40px;
   }
 
   .masthead-nav > li {
@@ -97,7 +97,7 @@ body.static_pages.home {
    */
 
   .cover {
-    padding: 150px 20px 0 20px;
+    padding: 50px 20px 0 20px;
   }
   .cover .btn-lg {
     padding: 10px 20px;
@@ -147,6 +147,10 @@ body.static_pages.home {
     .cover-container {
       width: 700px;
     }
+  }
+
+  .cover-heading {
+    font-size: 30px;
   }
 
 
