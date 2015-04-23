@@ -4,10 +4,11 @@
 body {
   padding-top: 50px;
 }
-
+html {
+  height: 100%;
+}
 
 body.static_pages.home {
-
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
@@ -16,6 +17,7 @@ body.static_pages.home {
   background-attachment: fixed;
   height: 100%;
   background-color: #333;
+  padding-top: 0;
 
   h3 {
     font-size: 66px
