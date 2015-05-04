@@ -1,0 +1,95 @@
+<%= form_for(@property) do |f| %>
+  <% if @property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% @property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    
+    <div class="form-group">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label for="date_constructed">Date Constructed</label><br/>
+      <select class="form-control" id="date_constructed" name="Property[property_data][date_constructed]">
+        <% (1900..(Time.now.year)).each do |year| %>
+          <option value="<%= year %>"><%= year %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="form-group button-list">
+      <label for="date_constructed">Material Used</label><br/>
+
+      <button type="button" class="btn btn-default">Fired bricks and clay blocks</button>
+      <button type="button" class="btn btn-default">Cement composites</button>
+      <button type="button" class="btn btn-default">Fabric</button>
+      <button type="button" class="btn btn-default">Foam</button>
+      <button type="button" class="btn btn-default">Glass</button>
+      <button type="button" class="btn btn-default">Gypcrete</button>
+      <button type="button" class="btn btn-default">Metal</button>
+      <button type="button" class="btn btn-default">Plastics</button>
+      <button type="button" class="btn btn-default">Wood</button>
+      <button type="button" class="btn btn-default">Other</button>
+
+    </div>
+
+    <div class="form-group button-list">
+      <label for="date_constructed">Total # of inhabitants</label><br/>
+
+      <% (0..20).each do |inhabitant_count| %>
+        <button type="button" class="btn btn-default"><%= inhabitant_count %></button>
+      <% end %>
+
+    </div>
+
+    <div class="form-group button-list">
+      <label for="date_constructed"># of inhabitants under 12</label><br/>
+
+      <% (0..12).each do |inhabitant_count| %>
+        <button type="button" class="btn btn-default"><%= inhabitant_count %></button>
+      <% end %>
+
+    </div>
+
+    <div class="form-group button-list">
+      <label for="date_constructed">Direction of Porch</label><br/>
+
+      <button type="button" class="btn btn-default">No Porch</button>
+      <button type="button" class="btn btn-default">North</button>
+      <button type="button" class="btn btn-default">East</button>
+      <button type="button" class="btn btn-default">South</button>
+      <button type="button" class="btn btn-default">West</button>
+
+    </div>
+
+    <div class="form-group">
+      <label for="date_constructed">Has windows?</label><br/>
+
+      <button type="button" class="btn btn-default">Yes</button>
+      <button type="button" class="btn btn-default">No</button>
+
+    </div>
+
+  </fieldset>
+
+  <div class="actions">
+
+    <% if params[:action] == 'new' || params[:action] == 'create' %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :coordinate_lat, value: params[:lat] %>
+      <%= f.hidden_field :coordinate_lng, value: params[:lng] %>
+    <% end %>
+
+    <%= f.submit :class => 'btn btn-success' %>
+  </div>
+<% end %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :properties
+
   get '/dashboard' => 'dashboard#index'
 
   devise_for :users
