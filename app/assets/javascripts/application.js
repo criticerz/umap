@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require leaflet.js
+//= require bootstrap
 //= require dashboard
 //= require_tree .
