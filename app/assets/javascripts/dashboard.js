@@ -14,6 +14,8 @@ $(document).ready(function() {
 
     L.Icon.Default.imagePath = '/assets';
 
+    console.log(myIcon);
+
     $.ajax({
       method: "GET",
       url: "/properties.json"
@@ -25,7 +27,7 @@ $(document).ready(function() {
         var popup_html = '<h5>'+property.name+'</h5> <a href="/properties/'+property.id+'/edit">Edit</a>';
 
         // add property 
-        markerLayers.addLayer(L.marker([property.coordinate_lat, property.coordinate_lng]).bindPopup(popup_html));
+        markerLayers.addLayer(L.marker([property.coordinate_lat, property.coordinate_lng], {icon: myIcon}).bindPopup(popup_html));
       })
       
     });
