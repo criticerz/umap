@@ -9,6 +9,10 @@
           <h3>Sign up</h3>
           
           <%= devise_error_messages! %>
+
+          <%- flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, :id => "flash_#{name}", :class => "alert alert-danger" if msg.is_a?(String) %>
+          <%- end -%>  
           
           <div class="form-group">
             <%= f.label :email %>
@@ -22,6 +26,11 @@
             <%= f.label :password_confirmation %>
             <%= f.password_field :password_confirmation, class: 'form-control' %>
           </div>
+
+          <% if params[:secret] == 'umap123' %>
+            <input type="hidden" name="allowed_to_register" value="1" />
+          <% end %>
+
            <%= f.submit 'Sign up', :class => 'button right btn btn-success' %>
         <% end %>
       </div>

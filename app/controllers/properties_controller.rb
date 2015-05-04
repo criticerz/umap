@@ -21,6 +21,9 @@ class PropertiesController < ApplicationController
   end
 
   def create
+
+    # abort(property_params.inspect)
+
     @property = Property.new(property_params)
     @property.save
     
@@ -29,7 +32,8 @@ class PropertiesController < ApplicationController
 
   def update
     @property.update(property_params)
-    respond_with(@property)
+    
+    redirect_to '/dashboard'
   end
 
   def destroy
@@ -43,6 +47,8 @@ class PropertiesController < ApplicationController
     end
 
     def property_params
-      params.require(:property).permit(:user_id, :coordinate_lat, :coordinate_lng, :name)
+      params.require(:property).permit(:user_id, :coordinate_lat, 
+        :coordinate_lng, :name, :property_data => [:date_constructed, :number_of_inhabitants, 
+          :number_of_inhabitants_under_twelve, :porch, :windows, :materials_used => []])
     end
 end
