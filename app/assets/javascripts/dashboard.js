@@ -12,6 +12,8 @@ $(document).ready(function() {
       id: 'examples.map-i875mjb7'
     }).addTo(map);
 
+    L.Icon.Default.imagePath = '/assets/';
+
     $.ajax({
       method: "GET",
       url: "/properties.json"
