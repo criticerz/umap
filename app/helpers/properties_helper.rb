@@ -1,5 +1,46 @@
 module PropertiesHelper
 
+  def property_uses
+    [
+      'Residential',
+      'Commercial',
+      'Other',
+      'Unknown'
+    ]
+  end
+
+  def roof_types
+    [
+      'Flat',
+      'Gable',
+      'Hip',
+      'Composite',
+      'Unknown'
+    ]
+  end
+
+  def window_types
+    [
+      'None',
+      'Single hung',
+      'Double hung',
+      'Awning',
+      'Casement',
+      'Hopper',
+      'Sliding',
+      'Unknown'
+    ]
+  end
+
+  def wall_types
+    [
+      'Concrete',
+      'Clay brick',
+      'Brick',
+      'Wood frame',
+      'Steel frame'
+    ]
+  end
 
   def material_options
     [

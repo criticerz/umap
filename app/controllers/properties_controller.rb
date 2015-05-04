@@ -48,7 +48,7 @@ class PropertiesController < ApplicationController
 
     def property_params
       params.require(:property).permit(:user_id, :coordinate_lat, 
-        :coordinate_lng, :name, :property_data => [:date_constructed, :number_of_inhabitants, 
-          :number_of_inhabitants_under_twelve, :porch, :windows, :materials_used => []])
+        :coordinate_lng, :name, :property_data => [:date_constructed, :number_of_stories, :comments, :wall_type, :property_use, :roof_type, :window_type,
+         :number_of_inhabitants, :number_of_inhabitants_under_twelve, :porch, :windows, :materials_used => []])
     end
 end

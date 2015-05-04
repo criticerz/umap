@@ -18,7 +18,7 @@
       <%= f.text_field :name, class: 'form-control' %>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="date_constructed">Date Constructed</label><br/>
       <select class="form-control" id="date_constructed" name="property[property_data][date_constructed]">
         <option value="">Select year..</option>
@@ -27,19 +27,67 @@
           <option value="<%= year %>"<%= ' selected' if @property.property_data.present? and @property.property_data['date_constructed'].present? and @property.property_data['date_constructed'].to_i == year %>><%= year %></option>
         <% end %>
       </select>
+    </div> -->
+
+    <div class="form-group">
+      <label for="date_constructed"># of stories</label><br/>
+      <select class="form-control" id="date_constructed" name="property[property_data][number_of_stories]">
+        <option value="">Select a number..</option>
+        <option value="Unknown"<%= ' selected' if @property.property_data.present? and @property.property_data['number_of_stories'].present? and @property.property_data['number_of_stories'] == 'Unknown' %>>Unknown</option>
+        <% (1..50).each do |year| %>
+          <option value="<%= year %>"<%= ' selected' if @property.property_data.present? and @property.property_data['number_of_stories'].present? and @property.property_data['number_of_stories'].to_i == year %>><%= year %></option>
+        <% end %>
+      </select>
     </div>
 
-    <div class="form-group button-list checkbox-button-list" data-property-field="materials_used">
-      <label for="date_constructed">Material Used</label><br/>
+    <div class="form-group button-list radio-button-list" data-property-field="property_use">
+      <label for="date_constructed">Property use?</label><br/>
 
-      <% material_options.each do |material| %>
-        <button type="button" class="btn btn-default<%= ' active' if @property.property_data.present? and @property.property_data['materials_used'].present? and @property.property_data['materials_used'].include?(material) %>"><%= material %></button>
+      <% property_uses.each do |use| %>
+        <button type="button" class="btn btn-default<%= ' active' if @property.property_data.present? and @property.property_data['property_use'].present? && @property.property_data['property_use'] == use %>"><%= use %></button>
       <% end %>
 
-      <% if @property.property_data.present? and @property.property_data['materials_used'].present? %>
-        <% @property.property_data['materials_used'].each do |material| %>
-          <input type="hidden" name="property[property_data][materials_used][]" value="<%= material %>" />
-        <% end %>
+      <% if @property.property_data.present? and @property.property_data['property_use'].present? %>
+        <input type="hidden" name="property[property_data][property_use]" value="<%= @property.property_data['property_use'] %>" />
+      <% end %>
+
+    </div>
+
+    <div class="form-group button-list radio-button-list" data-property-field="roof_type">
+      <label for="date_constructed">Roof type</label><br/>
+
+      <% roof_types.each do |roof_type| %>
+        <button type="button" class="btn btn-default<%= ' active' if @property.property_data.present? and @property.property_data['roof_type'].present? && @property.property_data['roof_type'] == roof_type %>"><%= roof_type %></button>
+      <% end %>
+
+      <% if @property.property_data.present? and @property.property_data['roof_type'].present? %>
+        <input type="hidden" name="property[property_data][roof_type]" value="<%= @property.property_data['roof_type'] %>" />
+      <% end %>
+
+    </div>
+
+    <div class="form-group button-list radio-button-list" data-property-field="window_type">
+      <label for="date_constructed">Window type</label><br/>
+
+      <% window_types.each do |window_type| %>
+        <button type="button" class="btn btn-default<%= ' active' if @property.property_data.present? and @property.property_data['window_type'].present? && @property.property_data['window_type'] == window_type %>"><%= window_type %></button>
+      <% end %>
+
+      <% if @property.property_data.present? and @property.property_data['window_type'].present? %>
+        <input type="hidden" name="property[property_data][window_type]" value="<%= @property.property_data['window_type'] %>" />
+      <% end %>
+
+    </div>
+
+    <div class="form-group button-list radio-button-list" data-property-field="wall_type">
+      <label for="date_constructed">Wall type</label><br/>
+
+      <% wall_types.each do |wall_type| %>
+        <button type="button" class="btn btn-default<%= ' active' if @property.property_data.present? and @property.property_data['wall_type'].present? && @property.property_data['wall_type'] == wall_type %>"><%= wall_type %></button>
+      <% end %>
+
+      <% if @property.property_data.present? and @property.property_data['wall_type'].present? %>
+        <input type="hidden" name="property[property_data][wall_type]" value="<%= @property.property_data['wall_type'] %>" />
       <% end %>
 
     </div>
@@ -75,28 +123,9 @@
     </div>
 
     <div class="form-group button-list radio-button-list" data-property-field="porch">
-      <label for="date_constructed">Direction of Porch</label><br/>
+      <label for="date_constructed">Comments</label><br/>
 
-      <% porch_options.each do |porch_option| %>
-        <button type="button" class="btn btn-default<%= ' active' if @property.property_data.present? and @property.property_data['porch'].present? && @property.property_data['porch'] == porch_option %>"><%= porch_option %></button>
-      <% end %>
-
-      <% if @property.property_data.present? and @property.property_data['porch'].present? %>
-        <input type="hidden" name="property[property_data][porch]" value="<%= @property.property_data['porch'] %>" />
-      <% end %>
-
-    </div>
-
-    <div class="form-group button-list radio-button-list" data-property-field="windows">
-      <label for="date_constructed">Has windows?</label><br/>
-
-      <% window_options.each do |window_option| %>
-        <button type="button" class="btn btn-default<%= ' active' if @property.property_data.present? and @property.property_data['windows'].present? && @property.property_data['windows'] == window_option %>"><%= window_option %></button>
-      <% end %>
-
-      <% if @property.property_data.present? and @property.property_data['windows'].present? %>
-        <input type="hidden" name="property[property_data][windows]" value="<%= @property.property_data['windows'] %>" />
-      <% end %>
+      <textarea name="property[property_data][comments]" class="form-control"><%= @property.property_data['comments'] if @property.property_data.present? and @property.property_data['comments'].present? %></textarea>
 
     </div>
 
