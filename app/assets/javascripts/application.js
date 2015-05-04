@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
-//= require leaflet.js
+//= require leaflet
 //= require bootstrap
 //= require dashboard
 //= require_tree .
