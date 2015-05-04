@@ -14,8 +14,6 @@ $(document).ready(function() {
 
     L.Icon.Default.imagePath = '/assets';
 
-    console.log(myIcon);
-
     $.ajax({
       method: "GET",
       url: "/properties.json"
